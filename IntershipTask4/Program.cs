@@ -1,5 +1,9 @@
 using IntershipTask4.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace IntershipTask4
 {
@@ -9,6 +13,29 @@ namespace IntershipTask4
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+            builder.Services.AddAuthorization();
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+
+                        ValidIssuer = jwtSettings["Issuer"],
+                        ValidAudience = jwtSettings["Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+                    };
+
+                    //options.Events = new JwtBearerEvents()
+                    //{
+                    //    OnAuthenticationFailed
+                    //};
+                });
+
             // Add services to the container.
             builder.Services.AddRazorPages();
 
@@ -16,6 +43,9 @@ namespace IntershipTask4
             builder.Services.AddDbContext<IntershipTask4Context>(options => options.UseSqlServer(connectionString));
 
             var app = builder.Build();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -30,16 +60,10 @@ namespace IntershipTask4
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.MapRazorPages();
             //app.UseWelcomePage();
 
-            app.Run(async (context) =>
-            {
-                context.Response.Redirect("https://dotnet.microsoft.com/ru-ru/apps/ai");
-                await context.Response.WriteAsync("");
-            });
+            
             app.Run();
         }
     }
