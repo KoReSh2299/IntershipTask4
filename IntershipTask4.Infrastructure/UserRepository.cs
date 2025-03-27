@@ -1,5 +1,7 @@
-﻿using IntershipTask4.Domain.abstractions;
+﻿using IntershipTask4.Domain;
+using IntershipTask4.Domain.abstractions;
 using IntershipTask4.Domain.Entities;
+using IntershipTask4.Domain.Filters;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,15 +28,20 @@ namespace IntershipTask4.Infrastructure
             return false;
         }
 
-        public async Task<IEnumerable<User>> Get(bool trackChanges) => 
+        public async Task<IEnumerable<User>> Get(Specification<User> specification, bool trackChanges) => 
             await (!trackChanges 
                 ? _dbContext.Users.AsNoTracking()
-                : _dbContext.Users).ToListAsync();
+                : _dbContext.Users).Where(specification.ToExpression()).ToListAsync();
 
-        public async Task<User?> Get(int id, bool trackChanges) =>
+        public async Task<User?> Get(int id, Specification<User> specification, bool trackChanges) =>
             await (!trackChanges
                 ? _dbContext.Users.AsNoTracking()
-                : _dbContext.Users).FirstOrDefaultAsync(u => u.Id == id);
+                : _dbContext.Users).Where(specification.ToExpression()).FirstOrDefaultAsync(u => u.Id == id);
+
+        public async Task<User?> GetByEmail(string email, Specification<User> specification, bool trackChanges) => 
+            await (!trackChanges
+                ? _dbContext.Users.AsNoTracking()
+                : _dbContext.Users).Where(specification.ToExpression()).FirstOrDefaultAsync(u => u.Email == email);
 
         public async Task SaveChangesAsync() => await _dbContext.SaveChangesAsync();
 

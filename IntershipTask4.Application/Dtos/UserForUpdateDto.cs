@@ -10,5 +10,6 @@ namespace IntershipTask4.Application.Dtos
     {
         public int Id { get; set; }
         public bool IsActive { get; set; }
+        public DateTime LastLoginTime { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IntershipTask4.Application\IntershipTask4.Application.csproj" />
+    <ProjectReference Include="..\IntershipTask4.Domain\IntershipTask4.Domain.csproj" />
+    <ProjectReference Include="..\IntershipTask4.Infrastructure\IntershipTask4.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

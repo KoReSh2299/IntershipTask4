@@ -1,4 +1,5 @@
 ﻿using IntershipTask4.Application.Dtos;
+using IntershipTask4.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -15,7 +16,7 @@ namespace IntershipTask4.Application.Services
     {
         private IConfiguration _configuration = configuration;
 
-        public string GenerateToken(UserDto user)
+        public JwtSecurityToken GenerateToken(User user)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
@@ -27,15 +28,13 @@ namespace IntershipTask4.Application.Services
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
             };
 
-            var token = new JwtSecurityToken(
+            return new JwtSecurityToken(
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(10),
                 signingCredentials: credentials
                 );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IntershipTask4.Domain\IntershipTask4.Domain.csproj" />
+    <ProjectReference Include="..\IntershipTask4.Infrastructure\IntershipTask4.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

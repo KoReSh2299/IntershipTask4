@@ -9,9 +9,10 @@ namespace IntershipTask4.Application.Dtos
     public class UserDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public string Name { get; set; } = null!;
+        public string Email { get; set; } = null!;
         public DateTime LastLoginTime { get; set; }
         public bool IsActive { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

@@ -11,13 +11,13 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
-    public string PasswordHash { get; set; } = null!;
-
     public DateTime? LastLoginTime { get; set; }
 
     public bool IsActive { get; set; }
 
-    public string PasswordSalt { get; set; } = null!;
-
     public DateTime? DeletedAt { get; set; }
+
+    public byte[] PasswordSalt { get; set; } = null!;
+
+    public byte[] PasswordHash { get; set; } = null!;
 }

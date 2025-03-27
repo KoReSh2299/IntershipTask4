@@ -9,6 +9,5 @@ namespace IntershipTask4.Application.Dtos
     public class UserForDeleteDto
     {
         public int Id { get; set; }
-        public DateTime DeletedAt { get; set; }
     }
 }

@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntershipTask4", "IntershipTask4\IntershipTask4.csproj", "{659B1707-6F2F-41D1-AB92-C100CCE487C7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntershipTask4.Domain", "IntershipTask4.Domain\IntershipTask4.Domain.csproj", "{5BF0824D-11EB-4B5E-BA6B-C4374B6A73C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntershipTask4.Infrastructure", "IntershipTask4.Infrastructure\IntershipTask4.Infrastructure.csproj", "{E275AA27-5EE9-4F31-89F9-2098F93461F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntershipTask4.Application", "IntershipTask4.Application\IntershipTask4.Application.csproj", "{CDFC58D1-D240-4364-8506-B71034D4F991}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntershipTask4.Web", "IntershipTask4.Web\IntershipTask4.Web.csproj", "{FF6F88E7-52E5-4E73-9772-14C8ABA0EC59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{659B1707-6F2F-41D1-AB92-C100CCE487C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{659B1707-6F2F-41D1-AB92-C100CCE487C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{659B1707-6F2F-41D1-AB92-C100CCE487C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{659B1707-6F2F-41D1-AB92-C100CCE487C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BF0824D-11EB-4B5E-BA6B-C4374B6A73C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BF0824D-11EB-4B5E-BA6B-C4374B6A73C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF0824D-11EB-4B5E-BA6B-C4374B6A73C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{CDFC58D1-D240-4364-8506-B71034D4F991}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDFC58D1-D240-4364-8506-B71034D4F991}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDFC58D1-D240-4364-8506-B71034D4F991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF6F88E7-52E5-4E73-9772-14C8ABA0EC59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF6F88E7-52E5-4E73-9772-14C8ABA0EC59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF6F88E7-52E5-4E73-9772-14C8ABA0EC59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF6F88E7-52E5-4E73-9772-14C8ABA0EC59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
